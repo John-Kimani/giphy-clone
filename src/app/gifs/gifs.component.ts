@@ -7,12 +7,14 @@ import { DataService } from '../data.service';
   styleUrls: ['./gifs.component.css']
 })
 export class GifsComponent implements OnInit {
+  gifs: any=[] = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.getTrendingGifs().subscribe((response) => {
-      console.log('Data', response);
+    this.dataService.getTrendingGifs().subscribe((response: any) => {
+      // console.log('Data', response);
+      this.gifs = response.data;
     });
   }
 
